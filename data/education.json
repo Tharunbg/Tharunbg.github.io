@@ -1,0 +1,46 @@
+{
+  "_instructions": "Add your education and certifications here.",
+  "sectionTitle": "Education & Certifications",
+  "certificationsTitle": "Certifications",
+  "education": [
+    {
+      "degree": "Master of Science",
+      "school": "The University of Texas at Arlington",
+      "institution": "The University of Texas at Arlington",
+      "period": "Jan 2024 - Dec 2025",
+      "details": "GPA: 3.6",
+      "description": "GPA: 3.6"
+    },
+    {
+      "degree": "Bachelor of Engineering",
+      "school": "Cambridge Institute of Technology, VTU",
+      "institution": "Cambridge Institute of Technology, VTU",
+      "period": "Aug 2019 - May 2023",
+      "details": "GPA: 8.0",
+      "description": "GPA: 8.0"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Data Analytics and Databases on AWS",
+      "name": "Data Analytics and Databases on AWS",
+      "issuer": "AWS",
+      "date": "",
+      "icon": "fas fa-certificate"
+    },
+    {
+      "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+      "name": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+      "issuer": "Microsoft",
+      "date": "",
+      "icon": "fas fa-certificate"
+    },
+    {
+      "title": "IBM Excel for Data Analysis",
+      "name": "IBM Excel for Data Analysis",
+      "issuer": "IBM",
+      "date": "",
+      "icon": "fas fa-certificate"
+    }
+  ]
+}

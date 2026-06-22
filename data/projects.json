@@ -1,0 +1,390 @@
+{
+  "_instructions": "Add your projects.",
+  "sectionTitle": "Featured Work",
+  "projects": [
+    {
+      "title": "GenAI-Powered Academic Analytics and Semantic Question-Answering System (RAG)",
+      "description": "Implemented a production-ready GenAI Q&A system integrating SQL data, FAISS semantic search, and LLMs, implementing intent-aware query routing to direct factual queries to SQL retrieval and interpretive queries to RAG.\nAchieved 85% Top-5 retrieval accuracy on semantic search benchmarks and reduced information discovery time by 40% through optimized vector embeddings and recommendation logic, deployed system using Gradio and PostgreSQL.",
+      "longDescription": "Implemented a production-ready GenAI Q&A system integrating SQL data, FAISS semantic search, and LLMs, implementing intent-aware query routing to direct factual queries to SQL retrieval and interpretive queries to RAG.\nAchieved 85% Top-5 retrieval accuracy on semantic search benchmarks and reduced information discovery time by 40% through optimized vector embeddings and recommendation logic, deployed system using Gradio and PostgreSQL.",
+      "category": "Data Science",
+      "technologies": [
+        "SQL",
+        "FAISS",
+        "LLMs",
+        "RAG",
+        "Gradio",
+        "PostgreSQL"
+      ],
+      "icon": "fas fa-brain",
+      "color": "#FF6B6B",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": true,
+      "github": "",
+      "demo": "",
+      "links": {
+        "github": "",
+        "demo": "",
+        "live": ""
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "E-Commerce Customer Analytics & Retention Analysis",
+      "description": "Built an end-to-end e-commerce analytics project using SQL, Python, and Tableau to analyze ~100K+ transactions, uncovering revenue trends, customer behavior, and key drivers across products and regions.\nPerformed cohort analysis and RFM segmentation to identify extremely low retention (<1%) and high dependence on at-risk customers, delivering actionable insights to improve customer retention and long-term revenue growth.",
+      "longDescription": "Built an end-to-end e-commerce analytics project using SQL, Python, and Tableau to analyze ~100K+ transactions, uncovering revenue trends, customer behavior, and key drivers across products and regions.\nPerformed cohort analysis and RFM segmentation to identify extremely low retention (<1%) and high dependence on at-risk customers, delivering actionable insights to improve customer retention and long-term revenue growth.",
+      "category": "Backend Development",
+      "technologies": [
+        "SQL",
+        "Python",
+        "Tableau"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#4ECDC4",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "",
+      "demo": "",
+      "links": {
+        "github": "",
+        "demo": "",
+        "live": ""
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "Real-Time Warehouse Inventory and AI-Assisted Logistics Optimization System",
+      "description": "Designed and engineered a real-time inventory tracking system in Python and Spark across 50+ warehouses, achieving sub-second latency and 100% sync accuracy, and developed ML-based incident resolution models reducing resolution time by 21%.\nImproved warehouse-to-delivery workflows using routing analytics, reducing logistics costs by 7.5% and improving pipeline reliability with data quality monitoring.",
+      "longDescription": "Designed and engineered a real-time inventory tracking system in Python and Spark across 50+ warehouses, achieving sub-second latency and 100% sync accuracy, and developed ML-based incident resolution models reducing resolution time by 21%.\nImproved warehouse-to-delivery workflows using routing analytics, reducing logistics costs by 7.5% and improving pipeline reliability with data quality monitoring.",
+      "category": "Backend Development",
+      "technologies": [
+        "Python",
+        "Spark"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FFE66D",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "",
+      "demo": "",
+      "links": {
+        "github": "",
+        "demo": "",
+        "live": ""
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "Machine-Learning",
+      "description": "🧠 Core machine learning algorithm implementations with clean code, clear explanations, and 📊 practical examples.",
+      "longDescription": "🧠 Core machine learning algorithm implementations with clean code, clear explanations, and 📊 practical examples.",
+      "category": "Backend Development",
+      "technologies": [
+        "Python"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#A8DADC",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/Machine-Learning",
+      "demo": "https://github.com/Tharunbg/Machine-Learning",
+      "links": {
+        "github": "https://github.com/Tharunbg/Machine-Learning",
+        "demo": "https://github.com/Tharunbg/Machine-Learning",
+        "live": "https://github.com/Tharunbg/Machine-Learning"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "E-Commerce-Customer-Analytics-Retention-Analysis",
+      "description": "This project analyzes customer behavior, revenue performance, and retention trends in an e-commerce business using the Olist dataset. The goal is to identify key business insights and provide data-driven recommendations to improve customer retention and revenue growth.",
+      "longDescription": "This project analyzes customer behavior, revenue performance, and retention trends in an e-commerce business using the Olist dataset. The goal is to identify key business insights and provide data-driven recommendations to improve customer retention and revenue growth.",
+      "category": "Software Development",
+      "technologies": [
+        "Jupyter Notebook"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#B19CD9",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/E-Commerce-Customer-Analytics-Retention-Analysis",
+      "demo": "https://github.com/Tharunbg/E-Commerce-Customer-Analytics-Retention-Analysis",
+      "links": {
+        "github": "https://github.com/Tharunbg/E-Commerce-Customer-Analytics-Retention-Analysis",
+        "demo": "https://github.com/Tharunbg/E-Commerce-Customer-Analytics-Retention-Analysis",
+        "live": "https://github.com/Tharunbg/E-Commerce-Customer-Analytics-Retention-Analysis"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "warehouse-logistics-optimization",
+      "description": "📦 Real-time warehouse logistics optimization system with streaming inventory sync, 🤖 AI-assisted incident resolution, and 🚚 route optimization—achieving 100% inventory accuracy, ~21% faster issue resolution, and ~7.5% cost reduction.",
+      "longDescription": "📦 Real-time warehouse logistics optimization system with streaming inventory sync, 🤖 AI-assisted incident resolution, and 🚚 route optimization—achieving 100% inventory accuracy, ~21% faster issue resolution, and ~7.5% cost reduction.",
+      "category": "Backend Development",
+      "technologies": [
+        "Python"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FF8B94",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/warehouse-logistics-optimization",
+      "demo": "https://github.com/Tharunbg/warehouse-logistics-optimization",
+      "links": {
+        "github": "https://github.com/Tharunbg/warehouse-logistics-optimization",
+        "demo": "https://github.com/Tharunbg/warehouse-logistics-optimization",
+        "live": "https://github.com/Tharunbg/warehouse-logistics-optimization"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "MavBot---UTA-Course-Q-A-Agent",
+      "description": "Hybrid RAG-powered course analytics and Q&A system combining FAISS vector search, LLMs, and historical GPA data for intelligent UTA course discovery.",
+      "longDescription": "Hybrid RAG-powered course analytics and Q&A system combining FAISS vector search, LLMs, and historical GPA data for intelligent UTA course discovery.",
+      "category": "Backend Development",
+      "technologies": [
+        "Python"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FF6B6B",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/MavBot---UTA-Course-Q-A-Agent",
+      "demo": "https://github.com/Tharunbg/MavBot---UTA-Course-Q-A-Agent",
+      "links": {
+        "github": "https://github.com/Tharunbg/MavBot---UTA-Course-Q-A-Agent",
+        "demo": "https://github.com/Tharunbg/MavBot---UTA-Course-Q-A-Agent",
+        "live": "https://github.com/Tharunbg/MavBot---UTA-Course-Q-A-Agent"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "healthcare-sql-streamlit-dashboard",
+      "description": "🏥 A simple Healthcare Database + Streamlit Dashboard using MySQL & Python",
+      "longDescription": "🏥 A simple Healthcare Database + Streamlit Dashboard using MySQL & Python",
+      "category": "Backend Development",
+      "technologies": [
+        "Python"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#4ECDC4",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/healthcare-sql-streamlit-dashboard",
+      "demo": "https://github.com/Tharunbg/healthcare-sql-streamlit-dashboard",
+      "links": {
+        "github": "https://github.com/Tharunbg/healthcare-sql-streamlit-dashboard",
+        "demo": "https://github.com/Tharunbg/healthcare-sql-streamlit-dashboard",
+        "live": "https://github.com/Tharunbg/healthcare-sql-streamlit-dashboard"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "BANK-LOAN-ANALYSIS",
+      "description": "🚀 Project Overview  Analyzes loan application data to understand customer and financial trends.  Evaluates loan performance metrics like funded amount, repayment amount, interest rates, and debt-to-income ratios.  Identifies good vs. bad loans based on repayment status.  Builds clear data visualizations for monthly trends and regional differences.",
+      "longDescription": "🚀 Project Overview  Analyzes loan application data to understand customer and financial trends.  Evaluates loan performance metrics like funded amount, repayment amount, interest rates, and debt-to-income ratios.  Identifies good vs. bad loans based on repayment status.  Builds clear data visualizations for monthly trends and regional differences.",
+      "category": "Software Development",
+      "technologies": [
+        "Jupyter Notebook"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FFE66D",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/BANK-LOAN-ANALYSIS",
+      "demo": "https://github.com/Tharunbg/BANK-LOAN-ANALYSIS",
+      "links": {
+        "github": "https://github.com/Tharunbg/BANK-LOAN-ANALYSIS",
+        "demo": "https://github.com/Tharunbg/BANK-LOAN-ANALYSIS",
+        "live": "https://github.com/Tharunbg/BANK-LOAN-ANALYSIS"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "coca-cola-sales-dashboard-excel",
+      "description": "📊 Interactive Excel dashboard analyzing Coca-Cola USA retailer sales with KPI tracking, 📈 trend analysis, and 🎯 brand & retailer comparisons using pivot tables and slicers.",
+      "longDescription": "📊 Interactive Excel dashboard analyzing Coca-Cola USA retailer sales with KPI tracking, 📈 trend analysis, and 🎯 brand & retailer comparisons using pivot tables and slicers.",
+      "category": "Development",
+      "technologies": [],
+      "icon": "fas fa-project-diagram",
+      "color": "#A8DADC",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/coca-cola-sales-dashboard-excel",
+      "demo": "https://github.com/Tharunbg/coca-cola-sales-dashboard-excel",
+      "links": {
+        "github": "https://github.com/Tharunbg/coca-cola-sales-dashboard-excel",
+        "demo": "https://github.com/Tharunbg/coca-cola-sales-dashboard-excel",
+        "live": "https://github.com/Tharunbg/coca-cola-sales-dashboard-excel"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "cohort_analysis",
+      "description": "Interactive application built for continuous learning",
+      "longDescription": "Interactive application built for continuous learning",
+      "category": "Software Development",
+      "technologies": [
+        "Jupyter Notebook"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#B19CD9",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/cohort_analysis",
+      "demo": "https://github.com/Tharunbg/cohort_analysis",
+      "links": {
+        "github": "https://github.com/Tharunbg/cohort_analysis",
+        "demo": "https://github.com/Tharunbg/cohort_analysis",
+        "live": "https://github.com/Tharunbg/cohort_analysis"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "langchain-rag-retrieval-augmented-generation-for-document-understanding",
+      "description": "Comprehensive project exploring software design patterns",
+      "longDescription": "Comprehensive project exploring software design patterns",
+      "category": "Software Development",
+      "technologies": [
+        "Jupyter Notebook"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FF8B94",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/langchain-rag-retrieval-augmented-generation-for-document-understanding",
+      "demo": "https://github.com/Tharunbg/langchain-rag-retrieval-augmented-generation-for-document-understanding",
+      "links": {
+        "github": "https://github.com/Tharunbg/langchain-rag-retrieval-augmented-generation-for-document-understanding",
+        "demo": "https://github.com/Tharunbg/langchain-rag-retrieval-augmented-generation-for-document-understanding",
+        "live": "https://github.com/Tharunbg/langchain-rag-retrieval-augmented-generation-for-document-understanding"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "multi-agentic-rag",
+      "description": "Learning project built with modern web technologies",
+      "longDescription": "Learning project built with modern web technologies",
+      "category": "Backend Development",
+      "technologies": [
+        "Python"
+      ],
+      "icon": "fas fa-project-diagram",
+      "color": "#FF6B6B",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/multi-agentic-rag",
+      "demo": "https://github.com/Tharunbg/multi-agentic-rag",
+      "links": {
+        "github": "https://github.com/Tharunbg/multi-agentic-rag",
+        "demo": "https://github.com/Tharunbg/multi-agentic-rag",
+        "live": "https://github.com/Tharunbg/multi-agentic-rag"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "us-healthcare-analysis-powerbi",
+      "description": "Hands-on learning experience with modern frameworks",
+      "longDescription": "Hands-on learning experience with modern frameworks",
+      "category": "Development",
+      "technologies": [],
+      "icon": "fas fa-project-diagram",
+      "color": "#4ECDC4",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/us-healthcare-analysis-powerbi",
+      "demo": "https://github.com/Tharunbg/us-healthcare-analysis-powerbi",
+      "links": {
+        "github": "https://github.com/Tharunbg/us-healthcare-analysis-powerbi",
+        "demo": "https://github.com/Tharunbg/us-healthcare-analysis-powerbi",
+        "live": "https://github.com/Tharunbg/us-healthcare-analysis-powerbi"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "stock-analysis",
+      "description": "Full-featured application built as a learning exercise",
+      "longDescription": "Full-featured application built as a learning exercise",
+      "category": "Development",
+      "technologies": [],
+      "icon": "fas fa-project-diagram",
+      "color": "#FFE66D",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/stock-analysis",
+      "demo": "https://github.com/Tharunbg/stock-analysis",
+      "links": {
+        "github": "https://github.com/Tharunbg/stock-analysis",
+        "demo": "https://github.com/Tharunbg/stock-analysis",
+        "live": "https://github.com/Tharunbg/stock-analysis"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    },
+    {
+      "title": "contribution-history",
+      "description": "Generated GitHub contribution history",
+      "longDescription": "Generated GitHub contribution history",
+      "category": "Development",
+      "technologies": [],
+      "icon": "fas fa-project-diagram",
+      "color": "#A8DADC",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "featured": false,
+      "github": "https://github.com/Tharunbg/contribution-history",
+      "demo": "https://github.com/Tharunbg/contribution-history",
+      "links": {
+        "github": "https://github.com/Tharunbg/contribution-history",
+        "demo": "https://github.com/Tharunbg/contribution-history",
+        "live": "https://github.com/Tharunbg/contribution-history"
+      },
+      "stats": {
+        "status": "Completed",
+        "year": "2026"
+      }
+    }
+  ]
+}

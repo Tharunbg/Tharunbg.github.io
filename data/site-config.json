@@ -1,0 +1,26 @@
+{
+  "_instructions": "Site-wide configuration and meta tags.",
+  "title": "Tharun Kumar Bettadalli Girish | Data Scientist",
+  "description": "Tharun Kumar Bettadalli Girish - Data Scientist | Portfolio",
+  "keywords": "Data Scientist, Portfolio, Tharun Kumar Bettadalli Girish",
+  "author": "Tharun Kumar Bettadalli Girish",
+  "siteName": "Tharun Kumar Bettadalli Girish",
+  "siteTitle": "Tharun Kumar Bettadalli Girish | Data Scientist",
+  "meta": {
+    "title": "Tharun Kumar Bettadalli Girish | Data Scientist",
+    "description": "Tharun Kumar Bettadalli Girish - Data Scientist | Portfolio",
+    "author": "Tharun Kumar Bettadalli Girish",
+    "keywords": "Data Scientist, Portfolio, Tharun Kumar Bettadalli Girish"
+  },
+  "branding": {
+    "name": "Tharun Kumar Bettadalli Girish",
+    "tagline": "Data Scientist",
+    "logo": "/logo.png"
+  },
+  "settings": {
+    "year": 2026,
+    "enableAnimations": true,
+    "enableParticles": true,
+    "navbarScrollEffect": true
+  }
+}

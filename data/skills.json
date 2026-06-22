@@ -1,0 +1,71 @@
+{
+  "_instructions": "Organize your skills with vibrant colors.",
+  "sectionTitle": "Skills & Technologies",
+  "categories": [
+    {
+      "category": "Programming Languages",
+      "icon": "fas fa-code",
+      "color": "#FF6B6B",
+      "skills": [
+        "Python",
+        "SQL",
+        "PySpark",
+        "R"
+      ]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "icon": "fas fa-toolbox",
+      "color": "#4ECDC4",
+      "skills": [
+        "Spark",
+        "Databricks",
+        "HDFS",
+        "Snowflake",
+        "DynamoDB",
+        "PostgreSQL",
+        "MySQL",
+        "Scikit-learn",
+        "XGBoost",
+        "PyTorch",
+        "TensorFlow",
+        "FAISS",
+        "RAG",
+        "LLMs",
+        "Flask",
+        "Gradio"
+      ]
+    },
+    {
+      "category": "Tools & Platforms",
+      "icon": "fas fa-wrench",
+      "color": "#FFE66D",
+      "skills": [
+        "Tableau",
+        "Power BI",
+        "Advanced Excel",
+        "Matplotlib",
+        "Seaborn",
+        "Plotly",
+        "GitHub",
+        "Docker",
+        "Jenkins"
+      ]
+    },
+    {
+      "category": "Technical Skills",
+      "icon": "fas fa-laptop-code",
+      "color": "#A8DADC",
+      "skills": [
+        "Data Engineering",
+        "ETL",
+        "Machine Learning",
+        "GenAI",
+        "Data Analytics",
+        "Cohort analysis",
+        "RFM segmentation",
+        "Semantic segmentation"
+      ]
+    }
+  ]
+}
