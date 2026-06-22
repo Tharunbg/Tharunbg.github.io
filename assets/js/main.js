@@ -351,26 +351,26 @@ async function loadProjects() {
                         ${techChips(featured)}
                         <span class="project-feature__cta">View code <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="project-feature__visual" aria-hidden="true">
-                        <div class="project-feature__icon"><i class="${featured.icon}"></i></div>
+                    <div class="project-feature__visual">
+                        ${featured.image ? `<img class="project-feature__img" src="${featured.image}" alt="${featured.title} visualization" loading="lazy">` : ''}
+                        <div class="project-feature__icon" aria-hidden="true"><i class="${featured.icon}"></i></div>
                         ${metricBlock(featured)}
                     </div>
                 </a>` : '';
 
             const panelsHTML = rest.map(p => `
                 <a class="project-panel" href="${ghUrl(p)}" target="_blank" rel="noopener noreferrer" aria-label="${p.title} — view code on GitHub">
-                    <div class="project-panel__bar">
-                        <span class="project-panel__dot"></span>
-                        <span class="project-panel__file">${repoName(p)}</span>
+                    <div class="project-panel__cover">
+                        ${p.image ? `<img class="project-panel__img" src="${p.image}" alt="${p.title} visualization" loading="lazy">` : ''}
+                        <span class="project-panel__file"><span class="project-panel__dot"></span>${repoName(p)}</span>
                         <i class="fas fa-arrow-right project-panel__arrow"></i>
                     </div>
-                    <div class="project-panel__head">
-                        <span class="project-panel__icon" style="color: ${p.color}"><i class="${p.icon}"></i></span>
+                    <div class="project-panel__content">
                         <h3 class="project-panel__title">${p.title}</h3>
+                        <p class="project-panel__desc">${p.description}</p>
+                        ${p.stats ? `<div class="project-panel__metrics">${Object.entries(p.stats).slice(0, 3).map(([k, v]) => `<span class="pm"><b>${v}</b> ${k}</span>`).join('')}</div>` : ''}
+                        ${techChips(p)}
                     </div>
-                    <p class="project-panel__desc">${p.description}</p>
-                    ${p.stats ? `<div class="project-panel__metrics">${Object.entries(p.stats).slice(0, 3).map(([k, v]) => `<span class="pm"><b>${v}</b> ${k}</span>`).join('')}</div>` : ''}
-                    ${techChips(p)}
                 </a>`).join('');
 
             projectsGrid.innerHTML = featuredHTML + `<div class="projects-rest">${panelsHTML}</div>`;

@@ -20,17 +20,17 @@
       "logo": "assets/images/logos/uta.png"
     },
     {
-      "title": "Data Annotator",
-      "icon": "fas fa-vector-square",
+      "title": "Data Analyst",
+      "icon": "fas fa-chart-bar",
       "color": "#22D3EE",
       "company": "Samsung SEED Pvt Ltd",
       "period": "May 2023 - Dec 2023",
       "location": "Bengaluru, India",
-      "description": "Executed semantic segmentation on millions of image pixels, classifying complex scenes with advanced interaction techniques that reduced annotation error rates by 20% and improved downstream model accuracy by 15%.\nLeveraged Samsung R&D’s proprietary annotation tool Datagen to refine image annotation accuracy by 30%, enhancing deep learning model training efficiency by 25% across multiple AI initiatives serving millions of users.\nOptimized annotation workflows and data processing pipelines across cross-functional AI teams, reducing time-to-production for computer vision models and streamlining operations for production deployment at scale.",
+      "description": "Analyzed and validated data quality across millions of labeled image records, surfacing error patterns that cut data error rates by 20% and lifted downstream model accuracy by 15%\nDefined data-quality metrics and structured review workflows in Samsung R&D's Datagen platform, improving dataset accuracy by 30% and data-pipeline efficiency by 25% across multiple AI initiatives\nProfiled and streamlined data-processing pipelines with cross-functional AI teams, reducing time-to-production and improving operational data quality at production scale",
       "responsibilities": [
-        "Executed semantic segmentation on millions of image pixels, classifying complex scenes with advanced interaction techniques that reduced annotation error rates by 20% and improved downstream model accuracy by 15%",
-        "Leveraged Samsung R&D’s proprietary annotation tool Datagen to refine image annotation accuracy by 30%, enhancing deep learning model training efficiency by 25% across multiple AI initiatives serving millions of users",
-        "Optimized annotation workflows and data processing pipelines across cross-functional AI teams, reducing time-to-production for computer vision models and streamlining operations for production deployment at scale"
+        "Analyzed and validated data quality across millions of labeled image records, surfacing error patterns that cut data error rates by 20% and lifted downstream model accuracy by 15%",
+        "Defined data-quality metrics and structured review workflows in Samsung R&D's Datagen platform, improving dataset accuracy by 30% and data-pipeline efficiency by 25% across multiple AI initiatives",
+        "Profiled and streamlined data-processing pipelines with cross-functional AI teams, reducing time-to-production and improving operational data quality at production scale"
       ],
       "domain": "samsung.com",
       "monogram": "S",
