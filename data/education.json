@@ -4,43 +4,55 @@
   "certificationsTitle": "Certifications",
   "education": [
     {
-      "degree": "Master of Science",
+      "degree": "Master of Science in Data Science",
+      "icon": "fas fa-graduation-cap",
+      "color": "#3B82F6",
       "school": "The University of Texas at Arlington",
       "institution": "The University of Texas at Arlington",
       "period": "Jan 2024 - Dec 2025",
-      "details": "GPA: 3.6",
-      "description": "GPA: 3.6"
+      "details": "GPA: 3.6 | Texas, USA",
+      "description": "Graduate study focused on machine learning, big data engineering, statistical modeling, and applied analytics. Relevant coursework: Machine Learning, Big Data & Cloud Computing, Database Systems, Data Mining, Statistical Methods, and Natural Language Processing. Co-Founded DATA (Data Analytics and Technology Association), leading datathons and workshops for 200+ participants and delivering 15+ hands-on projects while scaling a 150+ member community.",
+      "domain": "uta.edu",
+      "monogram": "UTA",
+      "logo": "assets/images/logos/uta.png"
     },
     {
-      "degree": "Bachelor of Engineering",
+      "degree": "Bachelor of Engineering in Computer Science",
+      "icon": "fas fa-university",
+      "color": "#22D3EE",
       "school": "Cambridge Institute of Technology, VTU",
       "institution": "Cambridge Institute of Technology, VTU",
       "period": "Aug 2019 - May 2023",
-      "details": "GPA: 8.0",
-      "description": "GPA: 8.0"
+      "details": "CGPA: 8.0 | Bengaluru, India",
+      "description": "Undergraduate degree in Computer Science under Visvesvaraya Technological University (VTU), building a strong foundation in data structures, algorithms, databases, operating systems, and software engineering. Completed a data science internship and capstone projects spanning ETL pipelines, recommendation systems, and backend analytics services.",
+      "domain": "cambridge.edu.in",
+      "monogram": "CIT"
     }
   ],
   "certifications": [
     {
       "title": "Data Analytics and Databases on AWS",
       "name": "Data Analytics and Databases on AWS",
-      "issuer": "AWS",
-      "date": "",
-      "icon": "fas fa-certificate"
+      "issuer": "Amazon Web Services",
+      "date": "2025",
+      "icon": "fab fa-aws",
+      "color": "#FF9900"
     },
     {
       "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
       "name": "Microsoft Certified: Azure Fundamentals (AZ-900)",
       "issuer": "Microsoft",
-      "date": "",
-      "icon": "fas fa-certificate"
+      "date": "2024",
+      "icon": "fab fa-microsoft",
+      "color": "#0078D4"
     },
     {
       "title": "IBM Excel for Data Analysis",
       "name": "IBM Excel for Data Analysis",
       "issuer": "IBM",
-      "date": "",
-      "icon": "fas fa-certificate"
+      "date": "2023",
+      "icon": "fas fa-file-excel",
+      "color": "#21A366"
     }
   ]
 }

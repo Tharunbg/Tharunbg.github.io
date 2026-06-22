@@ -3,32 +3,34 @@
   "sectionTitle": "About Me",
   "image": "assets/images/profile.jpg",
   "paragraphs": [
-    "Passionate professional."
+    "I'm Tharun, a Data Scientist completing my MS in Data Science at the University of Texas at Arlington. Over the past 4+ years I've worked across research and industry — from UTA's SEAR Lab to Samsung SEED and Varcons Technology — turning messy, large-scale data into reliable systems and clear decisions.",
+    "My day-to-day spans the full data lifecycle: building Python, SQL, and PySpark pipelines, engineering features on Spark and Databricks, training machine learning models, and shipping GenAI applications. I recently built a production RAG system that pairs FAISS semantic search with intent-aware query routing to hit 85% Top-5 retrieval accuracy, and I'm just as comfortable designing Tableau and Power BI dashboards that put insight in front of the people who need it.",
+    "Beyond the code, I care about building communities around data. As Co-Founder of DATA (Data Analytics and Technology Association) at UTA, I led datathons and workshops for 200+ participants and helped scale a 150+ member community — delivering 15+ projects along the way. I bring that same blend of technical depth and leadership to every team I join."
   ],
   "statistics": [
     {
       "icon": "fas fa-project-diagram",
       "value": "16+",
       "label": "Projects Completed",
-      "color": "#FF6B6B"
+      "color": "#3B82F6"
     },
     {
       "icon": "fas fa-briefcase",
       "value": "4+",
       "label": "Years Experience",
-      "color": "#4ECDC4"
+      "color": "#60A5FA"
     },
     {
-      "icon": "fas fa-code",
-      "value": "37+",
-      "label": "Technologies",
-      "color": "#FFE66D"
+      "icon": "fas fa-bullseye",
+      "value": "85%",
+      "label": "RAG Top-5 Accuracy",
+      "color": "#2563EB"
     },
     {
       "icon": "fas fa-award",
-      "value": "3+",
+      "value": "3",
       "label": "Certifications",
-      "color": "#A8DADC"
+      "color": "#22D3EE"
     }
   ],
   "downloadCV": {

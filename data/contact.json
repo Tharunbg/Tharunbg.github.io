@@ -9,7 +9,7 @@
       "value": "tharungirish10@gmail.com",
       "href": "mailto:tharungirish10@gmail.com",
       "icon": "fas fa-envelope",
-      "color": "#FF6B6B"
+      "color": "#3B82F6"
     },
     {
       "type": "phone",
@@ -17,7 +17,7 @@
       "value": "(817) 883-3846",
       "href": "tel:8178833846",
       "icon": "fas fa-phone",
-      "color": "#4ECDC4"
+      "color": "#60A5FA"
     },
     {
       "type": "location",
@@ -25,11 +25,11 @@
       "value": "Texas, USA",
       "href": "https://maps.google.com/?q=Texas%2C%20USA",
       "icon": "fas fa-map-marker-alt",
-      "color": "#FFE66D"
+      "color": "#22D3EE"
     }
   ],
   "form": {
-    "action": "#",
+    "action": "https://formsubmit.co/ajax/tharungirish10@gmail.com",
     "method": "POST",
     "submitText": "Send Message",
     "submitIcon": "fas fa-paper-plane",
@@ -82,7 +82,7 @@
       "platform": "LinkedIn",
       "url": "https://www.linkedin.com/in/tharungirish10/",
       "icon": "fab fa-linkedin",
-      "color": "#0077B5"
+      "color": "#22D3EE"
     }
   ]
 }

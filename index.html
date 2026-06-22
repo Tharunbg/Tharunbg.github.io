@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio description">
-    <meta name="keywords" content="portfolio, developer, designer">
-    <meta name="author" content="Your Name">
-    <title>Portfolio - Your Name</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <!-- Primary Meta -->
+    <title>Tharun Kumar Bettadalli Girish | Data Scientist</title>
+    <meta name="description" content="Tharun Kumar Bettadalli Girish — Data Scientist (MS, UT Arlington) specializing in Python, SQL, machine learning, and data analytics. Turning large, messy datasets into reliable, decision-ready insight.">
+    <meta name="keywords" content="Tharun Kumar Bettadalli Girish, Data Scientist, Data Analytics, Machine Learning, Python, SQL, Data Science, UT Arlington, Portfolio">
+    <meta name="author" content="Tharun Kumar Bettadalli Girish">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tharun Kumar Bettadalli Girish | Data Scientist">
+    <meta property="og:description" content="Data Scientist (MS, UT Arlington) specializing in Python, SQL, machine learning, and data analytics. Turning large, messy datasets into reliable, decision-ready insight.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tharunbg.github.io/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tharun Kumar Bettadalli Girish | Data Scientist">
+    <meta name="twitter:description" content="Data Scientist (MS, UT Arlington) specializing in Python, SQL, machine learning, and data analytics.">
+
+    <!-- Favicon (inline SVG data-URI: "T" monogram, accent blue on charcoal) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23121214'/%3E%3Ctext%20x='32'%20y='46'%20font-family='Georgia,serif'%20font-size='42'%20font-weight='700'%20text-anchor='middle'%20fill='%233B82F6'%3ET%3C/text%3E%3C/svg%3E">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Bricolage Grotesque (display) + Geist (body) + Geist Mono (metrics/labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
+    <a href="#hero" class="skip-link">Skip to content</a>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#home" class="nav-brand" id="nav-brand"></a>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <a href="#hero" class="nav-brand" id="nav-brand">Tharun Kumar Bettadalli Girish</a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -41,13 +56,14 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
+        <canvas id="neural-canvas" aria-hidden="true"></canvas>
         <div class="container">
             <div class="hero-content">
-                <p class="hero-greeting" id="hero-greeting"></p>
-                <h1 class="hero-name" id="hero-name"></h1>
-                <h2 class="hero-title" id="hero-title"></h2>
-                <p class="hero-tagline" id="hero-tagline"></p>
-                <p class="hero-summary" id="hero-summary"></p>
+                <p class="hero-greeting" id="hero-greeting">Hi, I'm</p>
+                <h1 class="hero-name" id="hero-name">Tharun <span>Kumar Bettadalli Girish</span></h1>
+                <h2 class="hero-title" id="hero-title">Data Scientist</h2>
+                <p class="hero-tagline" id="hero-tagline">Turning large, messy datasets into reliable, decision-ready insight.</p>
+                <p class="hero-summary" id="hero-summary">Data Scientist with an MS in Data Science from The University of Texas at Arlington, specializing in Python, SQL, machine learning, and large-scale data analytics.</p>
 
                 <div class="hero-highlights" id="hero-highlights"></div>
 
@@ -60,12 +76,15 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
+            <div class="hero-portrait">
+                <div class="hero-portrait-frame">
+                    <img src="assets/images/profile.jpg"
+                         alt="Tharun Kumar Bettadalli Girish — Data Scientist"
+                         width="720" height="720" loading="eager" />
+                </div>
+            </div>
         </div>
-        <div class="hero-decoration">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
+        <div class="hero-decoration"></div>
     </section>
 
     <!-- About Section -->
@@ -73,7 +92,9 @@
         <div class="container">
             <h2 class="section-title" id="about-title">About Me</h2>
             <div class="about-content">
-                <div class="about-text" id="about-text"></div>
+                <div class="about-text" id="about-text">
+                    <p>I'm a Data Scientist focused on transforming complex, real-world data into clear, actionable decisions. I hold an MS in Data Science from The University of Texas at Arlington and a BE in Computer Science from VTU.</p>
+                </div>
                 <div class="about-stats" id="about-stats"></div>
             </div>
             <div class="about-actions" id="about-actions"></div>
@@ -91,7 +112,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section section">
         <div class="container">
-            <h2 class="section-title" id="skills-title">Skills & Technologies</h2>
+            <h2 class="section-title" id="skills-title">Skills &amp; Technologies</h2>
             <div class="skills-grid" id="skills-grid"></div>
         </div>
     </section>
@@ -110,7 +131,7 @@
             <h2 class="section-title" id="education-title">Education</h2>
             <div class="education-grid" id="education-grid"></div>
 
-            <h3 class="subsection-title" id="certifications-title">Certifications & Awards</h3>
+            <h3 class="subsection-title" id="certifications-title">Certifications &amp; Awards</h3>
             <div class="certifications-grid" id="certifications-grid"></div>
         </div>
     </section>
@@ -147,8 +168,12 @@
         </div>
     </footer>
 
-    <!-- Particles.js Library -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <noscript>
+        <p style="text-align:center;padding:1rem;color:#C4C4CC;background:#1A1A1E;">
+            This portfolio is enhanced with JavaScript. Core content is shown above:
+            Tharun Kumar Bettadalli Girish — Data Scientist. Contact: tharungirish10@gmail.com.
+        </p>
+    </noscript>
 
     <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>

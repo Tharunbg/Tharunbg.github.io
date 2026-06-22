@@ -3,9 +3,9 @@
   "sectionTitle": "Skills & Technologies",
   "categories": [
     {
-      "category": "Programming Languages",
+      "category": "Programming & Query",
       "icon": "fas fa-code",
-      "color": "#FF6B6B",
+      "color": "#3B82F6",
       "skills": [
         "Python",
         "SQL",
@@ -14,32 +14,38 @@
       ]
     },
     {
-      "category": "Frameworks & Libraries",
-      "icon": "fas fa-toolbox",
-      "color": "#4ECDC4",
+      "category": "Data Engineering",
+      "icon": "fas fa-database",
+      "color": "#60A5FA",
       "skills": [
         "Spark",
         "Databricks",
         "HDFS",
+        "ETL",
         "Snowflake",
         "DynamoDB",
         "PostgreSQL",
-        "MySQL",
+        "MySQL"
+      ]
+    },
+    {
+      "category": "Machine Learning & GenAI",
+      "icon": "fas fa-brain",
+      "color": "#2563EB",
+      "skills": [
         "Scikit-learn",
         "XGBoost",
         "PyTorch",
         "TensorFlow",
         "FAISS",
         "RAG",
-        "LLMs",
-        "Flask",
-        "Gradio"
+        "LLMs"
       ]
     },
     {
-      "category": "Tools & Platforms",
-      "icon": "fas fa-wrench",
-      "color": "#FFE66D",
+      "category": "Analytics & Tools",
+      "icon": "fas fa-chart-line",
+      "color": "#22D3EE",
       "skills": [
         "Tableau",
         "Power BI",
@@ -50,21 +56,6 @@
         "GitHub",
         "Docker",
         "Jenkins"
-      ]
-    },
-    {
-      "category": "Technical Skills",
-      "icon": "fas fa-laptop-code",
-      "color": "#A8DADC",
-      "skills": [
-        "Data Engineering",
-        "ETL",
-        "Machine Learning",
-        "GenAI",
-        "Data Analytics",
-        "Cohort analysis",
-        "RFM segmentation",
-        "Semantic segmentation"
       ]
     }
   ]

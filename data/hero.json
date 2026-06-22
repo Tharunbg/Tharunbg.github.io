@@ -3,24 +3,24 @@
   "greeting": "Hi, I'm",
   "name": "Tharun Kumar Bettadalli Girish",
   "title": "Data Scientist",
-  "summary": "Data Scientist with 4+ years of experience specializing in Python, SQL, PySpark.",
+  "summary": "Data Scientist with 4+ years across research, R&D and product teams, building ML and GenAI/RAG systems on Python, SQL, PySpark and Spark. I ship production analytics that turn raw data into measurable decisions.",
   "avatarUrl": "/avatar.png",
-  "tagline": "Data Scientist",
+  "tagline": "I turn messy data into decisions — ML, GenAI & analytics at scale",
   "highlights": [
     {
       "icon": "fas fa-briefcase",
       "text": "4+ Years Experience",
-      "color": "#FF6B6B"
+      "color": "#3B82F6"
     },
     {
       "icon": "fas fa-project-diagram",
-      "text": "16+ Projects Completed",
-      "color": "#4ECDC4"
+      "text": "16+ Projects",
+      "color": "#22D3EE"
     },
     {
       "icon": "fas fa-code",
-      "text": "Technical Expertise",
-      "color": "#FFE66D"
+      "text": "85% RAG Top-5 Accuracy",
+      "color": "#60A5FA"
     }
   ],
   "cta": {

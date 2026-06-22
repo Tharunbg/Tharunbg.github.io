@@ -6,14 +6,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 });
 
+// Respect the user's motion preference for all programmatic scrolling.
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scrollBehavior = () => (prefersReducedMotion() ? 'auto' : 'smooth');
+
+// Mark all decorative Font Awesome icons as hidden from assistive tech.
+function hideDecorativeIcons() {
+    document.querySelectorAll('i.fa, i.fas, i.fab, i.far').forEach(icon => {
+        if (!icon.hasAttribute('aria-hidden')) {
+            icon.setAttribute('aria-hidden', 'true');
+        }
+    });
+}
+
+// Swap in locally-hosted company/institution logos. The on-brand monogram
+// badge (.logo-fallback) ships in the markup and stays visible by default;
+// .has-logo is added only once the image actually loads, so a missing or
+// broken logo silently leaves the monogram in place.
+function initLogos() {
+    document.querySelectorAll('.logo-img[data-src]').forEach(img => {
+        const src = img.getAttribute('data-src');
+        const chip = img.closest('.logo-chip');
+        if (!src || !chip) return;
+        img.addEventListener('load', () => {
+            if (img.naturalWidth > 2) chip.classList.add('has-logo');
+        });
+        img.addEventListener('error', () => { /* keep the monogram fallback */ });
+        img.src = src;
+    });
+}
+
 // ============================================
 // Initialize Application
 // ============================================
 async function initializeApp() {
     try {
-        // Initialize particles background
-        initializeParticles();
-
         // Load all data sections
         await Promise.all([
             loadSiteConfig(),
@@ -28,11 +55,18 @@ async function initializeApp() {
             loadFooter()
         ]);
 
-        // Initialize interactive features
+        // Initialize interactive features (after content has loaded so all
+        // data-driven elements exist for observers / canvas sizing).
         initializeNavigation();
         initializeScrollEffects();
-        initializeScrollReveal();
+        initializeReveal();
+        initializeCountUp();
+        initNeuralCanvas();
         initializeBackToTop();
+        initLogos();
+
+        // Hide decorative icons rendered into the data-driven sections.
+        hideDecorativeIcons();
 
         console.log('Portfolio loaded successfully!');
     } catch (error) {
@@ -212,9 +246,9 @@ async function loadExperience() {
         if (timelineContainer && data.experiences) {
             timelineContainer.innerHTML = data.experiences.map(exp => `
                 <div class="timeline-item">
-                    <div class="timeline-empty"></div>
-                    <div class="timeline-icon" style="background: ${exp.color}">
-                        <i class="${exp.icon}"></i>
+                    <div class="timeline-icon logo-chip" style="background: ${exp.color}">
+                        <span class="logo-fallback">${exp.monogram || ''}</span>
+                        ${exp.logo ? `<img class="logo-img" alt="${exp.company} logo" data-src="${exp.logo}">` : ''}
                     </div>
                     <div class="timeline-content">
                         <div class="experience-header">
@@ -228,12 +262,11 @@ async function loadExperience() {
                                 ${exp.type ? `<span class="experience-type">• ${exp.type}</span>` : ''}
                             </p>
                         </div>
-                        <p class="experience-description">${exp.description}</p>
-                        ${exp.responsibilities ? `
+                        ${exp.responsibilities && exp.responsibilities.length ? `
                             <ul class="experience-responsibilities">
                                 ${exp.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
                             </ul>
-                        ` : ''}
+                        ` : `<p class="experience-description">${exp.description}</p>`}
                         ${exp.technologies ? `
                             <div class="experience-tech">
                                 ${exp.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
@@ -295,48 +328,52 @@ async function loadProjects() {
         // Render projects
         const projectsGrid = document.getElementById('projects-grid');
         if (projectsGrid && data.projects) {
-            projectsGrid.innerHTML = data.projects.map(project => `
-                <div class="project-card">
-                    <div class="project-icon" style="background: ${project.color}">
-                        <i class="${project.icon}"></i>
+            // "Project dossiers": a wide featured showcase + a grid of panel cards.
+            const hasFeatured = data.projects.some(p => p.featured === true);
+            const featured = data.projects.find((p, i) => hasFeatured ? p.featured === true : i === 0);
+            const rest = data.projects.filter(p => p !== featured);
+
+            const ghUrl = (p) => (p.links && p.links.github) || p.github || '#';
+            const repoName = (p) => (ghUrl(p).split('/').filter(Boolean).pop() || 'repository');
+            const techChips = (p) => p.technologies
+                ? `<div class="project-tags">${p.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>`
+                : '';
+            const metricBlock = (p) => p.stats
+                ? `<div class="project-stats">${Object.entries(p.stats).map(([k, v]) => `<div class="project-stat"><span class="project-stat-value">${v}</span><span class="project-stat-label">${k}</span></div>`).join('')}</div>`
+                : '';
+
+            const featuredHTML = featured ? `
+                <a class="project-feature" href="${ghUrl(featured)}" target="_blank" rel="noopener noreferrer" aria-label="${featured.title} — view code on GitHub">
+                    <div class="project-feature__body">
+                        <span class="project-eyebrow"><span class="project-eyebrow__dot"></span>Featured${featured.category ? ` · ${featured.category}` : ''}</span>
+                        <h3 class="project-feature__title">${featured.title}</h3>
+                        <p class="project-feature__desc">${featured.longDescription || featured.description}</p>
+                        ${techChips(featured)}
+                        <span class="project-feature__cta">View code <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="project-header">
-                        <h3 class="project-title">${project.title}</h3>
+                    <div class="project-feature__visual" aria-hidden="true">
+                        <div class="project-feature__icon"><i class="${featured.icon}"></i></div>
+                        ${metricBlock(featured)}
                     </div>
-                    <p class="project-description">${project.description}</p>
-                    ${project.technologies ? `
-                        <div class="project-tech">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                    ` : ''}
-                    ${project.links ? `
-                        <div class="project-links">
-                            ${project.links.github ? `
-                                <a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            ` : ''}
-                            ${project.links.demo ? `
-                                <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo
-                                </a>
-                            ` : ''}
-                        </div>
-                    ` : ''}
-                    ${project.stats ? `
-                        <div class="project-stats">
-                            ${Object.entries(project.stats).map(([key, value]) => `
-                                <div class="project-stat">
-                                    <span class="project-stat-value">${value}</span>
-                                    <span class="project-stat-label">${key}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                </div>
-            `).join('');
+                </a>` : '';
+
+            const panelsHTML = rest.map(p => `
+                <a class="project-panel" href="${ghUrl(p)}" target="_blank" rel="noopener noreferrer" aria-label="${p.title} — view code on GitHub">
+                    <div class="project-panel__bar">
+                        <span class="project-panel__dot"></span>
+                        <span class="project-panel__file">${repoName(p)}</span>
+                        <i class="fas fa-arrow-right project-panel__arrow"></i>
+                    </div>
+                    <div class="project-panel__head">
+                        <span class="project-panel__icon" style="color: ${p.color}"><i class="${p.icon}"></i></span>
+                        <h3 class="project-panel__title">${p.title}</h3>
+                    </div>
+                    <p class="project-panel__desc">${p.description}</p>
+                    ${p.stats ? `<div class="project-panel__metrics">${Object.entries(p.stats).slice(0, 3).map(([k, v]) => `<span class="pm"><b>${v}</b> ${k}</span>`).join('')}</div>` : ''}
+                    ${techChips(p)}
+                </a>`).join('');
+
+            projectsGrid.innerHTML = featuredHTML + `<div class="projects-rest">${panelsHTML}</div>`;
         }
     } catch (error) {
         console.error('Error loading projects section:', error);
@@ -359,8 +396,9 @@ async function loadEducation() {
         if (educationGrid && data.education) {
             educationGrid.innerHTML = data.education.map(edu => `
                 <div class="education-card">
-                    <div class="education-icon" style="background: ${edu.color}20; color: ${edu.color}">
-                        <i class="${edu.icon}"></i>
+                    <div class="education-icon logo-chip" style="background: ${edu.color}20; color: ${edu.color}">
+                        <span class="logo-fallback">${edu.monogram || ''}</span>
+                        ${edu.logo ? `<img class="logo-img" alt="${edu.institution} logo" data-src="${edu.logo}">` : ''}
                     </div>
                     <h3 class="education-degree">${edu.degree}</h3>
                     <p class="education-institution">${edu.institution}</p>
@@ -418,7 +456,7 @@ async function loadContact() {
                         <i class="${info.icon}"></i>
                     </div>
                     <div class="contact-info-content">
-                        <h4>${info.label}</h4>
+                        <span class="contact-info-label">${info.label}</span>
                         <p>${info.value}</p>
                     </div>
                 </a>
@@ -568,7 +606,8 @@ function initializeNavigation() {
     // Mobile menu toggle
     if (navToggle) {
         navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
 
@@ -576,6 +615,9 @@ function initializeNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
+            if (navToggle) {
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 
@@ -590,7 +632,7 @@ function initializeNavigation() {
                 const offsetTop = targetSection.offsetTop - 80;
                 window.scrollTo({
                     top: offsetTop,
-                    behavior: 'smooth'
+                    behavior: scrollBehavior()
                 });
             }
         });
@@ -603,56 +645,428 @@ function initializeNavigation() {
 function initializeScrollEffects() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    const scrollProgress = document.getElementById('scroll-progress');
 
-    window.addEventListener('scroll', () => {
-        // Navbar scroll effect
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    // --- ONE rAF-guarded scroll handler: navbar 'scrolled' + scroll progress ---
+    let ticking = false;
+
+    const onScrollFrame = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+        // Navbar elevation state.
+        if (navbar) {
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
 
-        // Active link highlighting
-        const sections = document.querySelectorAll('section[id]');
-        let currentSection = '';
+        // Top scroll-progress bar fill.
+        if (scrollProgress) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+        }
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
+        ticking = false;
+    };
 
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(onScrollFrame);
+        }
+    }, { passive: true });
 
+    // Keep progress accurate when the layout height changes.
+    window.addEventListener('resize', () => {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(onScrollFrame);
+        }
+    }, { passive: true });
+
+    // Run once on load to set initial navbar + progress state.
+    onScrollFrame();
+
+    // --- Active-link highlighting via IntersectionObserver (no layout reads on scroll) ---
+    const setActiveLink = (id) => {
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
+            if (link.getAttribute('href') === `#${id}`) {
                 link.classList.add('active');
-            }
-        });
-    });
-}
-
-// ============================================
-// Initialize Scroll Reveal Animation
-// ============================================
-function initializeScrollReveal() {
-    const revealElements = document.querySelectorAll('.section, .timeline-item, .skill-category, .project-card, .education-card, .certification-card');
-
-    const revealOnScroll = () => {
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('reveal', 'active');
             }
         });
     };
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+    if ('IntersectionObserver' in window && sections.length) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveLink(entry.target.getAttribute('id'));
+                }
+            });
+        }, {
+            // Trigger when a section crosses the upper portion of the viewport.
+            rootMargin: '-40% 0px -55% 0px',
+            threshold: 0
+        });
+
+        sections.forEach(section => sectionObserver.observe(section));
+    }
+}
+
+// ============================================
+// Initialize Reveal (sections + cards + timeline items)
+// ============================================
+// Adds class "in-view" to reveal targets once they scroll into view. CSS owns
+// the hidden initial state and the visible/animated .in-view state. Under
+// reduced motion (or without observer support) everything is shown immediately.
+function initializeReveal() {
+    const revealSelector = [
+        '.section',
+        '.stat-card',
+        '.timeline-item',
+        '.skill-category',
+        '.project-feature',
+        '.project-panel',
+        '.education-card',
+        '.certification-card'
+    ].join(', ');
+
+    const revealElements = document.querySelectorAll(revealSelector);
+    if (!revealElements.length) return;
+
+    // Reduced motion or no IntersectionObserver -> reveal everything now.
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+        revealElements.forEach(el => el.classList.add('in-view'));
+        return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px -120px 0px',
+        threshold: 0
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+}
+
+// ============================================
+// Initialize Count-Up (metric values)
+// ============================================
+// Animates numeric values inside .stat-value and .project-stat-value from 0 to
+// the parsed target when they scroll into view (once). Preserves any prefix /
+// suffix and thousands separators ("+", "%", "K+", "15,000+"). Non-numeric
+// values (e.g. "sub-second") are left untouched. Reduced motion -> final value
+// immediately.
+function initializeCountUp() {
+    const targets = document.querySelectorAll('.stat-value, .project-stat-value');
+    if (!targets.length) return;
+
+    const reduced = prefersReducedMotion();
+
+    const animateValue = (el) => {
+        const raw = el.textContent.trim();
+
+        // Find the first numeric run, allowing thousands separators and decimals.
+        const match = raw.match(/[0-9][0-9,]*(?:\.[0-9]+)?/);
+        if (!match) {
+            // Non-numeric (e.g. "sub-second") -> leave as-is.
+            return;
+        }
+
+        const numberStr = match[0];
+        const prefix = raw.slice(0, match.index);
+        const suffix = raw.slice(match.index + numberStr.length);
+
+        const hadComma = numberStr.indexOf(',') !== -1;
+        const decimals = (numberStr.split('.')[1] || '').length;
+        const targetValue = parseFloat(numberStr.replace(/,/g, ''));
+
+        if (!isFinite(targetValue)) return;
+
+        const formatNumber = (value) => {
+            let out = decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
+            if (hadComma) {
+                const parts = out.split('.');
+                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                out = parts.join('.');
+            }
+            return out;
+        };
+
+        const setValue = (value) => {
+            el.textContent = `${prefix}${formatNumber(value)}${suffix}`;
+        };
+
+        if (reduced) {
+            setValue(targetValue);
+            return;
+        }
+
+        const duration = 1600;
+        const start = performance.now();
+        // easeOutCubic for a snappy, decelerating count.
+        const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+        const step = (now) => {
+            const elapsed = now - start;
+            const t = Math.min(1, elapsed / duration);
+            setValue(targetValue * ease(t));
+            if (t < 1) {
+                requestAnimationFrame(step);
+            } else {
+                setValue(targetValue);
+            }
+        };
+
+        requestAnimationFrame(step);
+    };
+
+    // No observer support -> just set final values.
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(animateValue);
+        return;
+    }
+
+    const countObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateValue(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0
+    });
+
+    targets.forEach(el => countObserver.observe(el));
+}
+
+// ============================================
+// Initialize Neural Network Canvas (hero "Living Data" layer)
+// ============================================
+// Hand-written vanilla canvas: drifting nodes connected by lines when near, in
+// blue / cyan with soft opacity and subtle mouse parallax. DPR-aware,
+// resize-aware, rAF-driven. Pauses when the tab is hidden or the hero is out of
+// view. Reduced motion -> draws ONE static frame and never animates.
+function initNeuralCanvas() {
+    const canvas = document.getElementById('neural-canvas');
+    if (!canvas || !canvas.getContext) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const hero = canvas.closest('.hero-section') || canvas.parentElement;
+
+    const COLOR_BLUE = '59, 130, 246';   // #3B82F6
+    const COLOR_CYAN = '34, 211, 238';    // #22D3EE
+    const MAX_LINK_DIST = 140;            // px (CSS space) for connecting lines
+    const MAX_LINK_DIST_SQ = MAX_LINK_DIST * MAX_LINK_DIST;
+    const MAX_NEIGHBORS = 6;              // cap line work per node
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let nodes = [];
+    let rafId = null;
+    let running = false;
+    let heroVisible = true;
+
+    // Mouse parallax (CSS-space offset applied to drawing).
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0, active: false };
+
+    const reduced = prefersReducedMotion();
+
+    const computeCount = () => {
+        // Cap particle count by viewport area to keep things cheap.
+        const area = width * height;
+        const byArea = Math.round(area / 14000);
+        return Math.max(40, Math.min(90, byArea));
+    };
+
+    const makeNode = () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: 1 + Math.random() * 1.8,
+        cyan: Math.random() > 0.5
+    });
+
+    const buildNodes = () => {
+        const count = computeCount();
+        nodes = [];
+        for (let i = 0; i < count; i++) nodes.push(makeNode());
+    };
+
+    const resize = () => {
+        const rect = (hero || canvas).getBoundingClientRect();
+        width = Math.max(1, Math.round(rect.width));
+        height = Math.max(1, Math.round(rect.height));
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        buildNodes();
+    };
+
+    const draw = () => {
+        // Smooth the parallax pointer toward its target.
+        pointer.x += (pointer.tx - pointer.x) * 0.06;
+        pointer.y += (pointer.ty - pointer.y) * 0.06;
+
+        ctx.clearRect(0, 0, width, height);
+
+        const ox = pointer.active ? pointer.x : 0;
+        const oy = pointer.active ? pointer.y : 0;
+
+        // Connecting lines (distance-based, capped neighbors).
+        for (let i = 0; i < nodes.length; i++) {
+            const a = nodes[i];
+            let neighbors = 0;
+            for (let j = i + 1; j < nodes.length && neighbors < MAX_NEIGHBORS; j++) {
+                const b = nodes[j];
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const distSq = dx * dx + dy * dy;
+                if (distSq < MAX_LINK_DIST_SQ) {
+                    neighbors++;
+                    const alpha = (1 - distSq / MAX_LINK_DIST_SQ) * 0.28;
+                    ctx.strokeStyle = `rgba(${a.cyan ? COLOR_CYAN : COLOR_BLUE}, ${alpha.toFixed(3)})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + ox, a.y + oy);
+                    ctx.lineTo(b.x + ox, b.y + oy);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Nodes.
+        for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(${n.cyan ? COLOR_CYAN : COLOR_BLUE}, 0.7)`;
+            ctx.arc(n.x + ox, n.y + oy, n.r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    };
+
+    const update = () => {
+        for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x < 0) { n.x = 0; n.vx *= -1; }
+            else if (n.x > width) { n.x = width; n.vx *= -1; }
+            if (n.y < 0) { n.y = 0; n.vy *= -1; }
+            else if (n.y > height) { n.y = height; n.vy *= -1; }
+        }
+    };
+
+    const tick = () => {
+        if (!running) return;
+        update();
+        draw();
+        rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+        if (running || reduced) return;
+        if (document.hidden) return;
+        running = true;
+        rafId = requestAnimationFrame(tick);
+    };
+
+    const stop = () => {
+        running = false;
+        if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    };
+
+    // --- Build + initial paint ---
+    resize();
+    draw(); // one static frame regardless of motion preference
+
+    // Reduced motion: static frame only, no animation, no listeners that animate.
+    if (reduced) {
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { resize(); draw(); }, 150);
+        }, { passive: true });
+        return;
+    }
+
+    // --- Resize handling (debounced) ---
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            resize();
+            draw();
+        }, 150);
+    }, { passive: true });
+
+    // --- Mouse parallax ---
+    const onPointerMove = (e) => {
+        const rect = (hero || canvas).getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width - 0.5;
+        const relY = (e.clientY - rect.top) / rect.height - 0.5;
+        pointer.tx = relX * 28; // max ~28px parallax shift
+        pointer.ty = relY * 28;
+        pointer.active = true;
+    };
+    const onPointerLeave = () => {
+        pointer.tx = 0;
+        pointer.ty = 0;
+    };
+    (hero || window).addEventListener('mousemove', onPointerMove, { passive: true });
+    (hero || window).addEventListener('mouseleave', onPointerLeave, { passive: true });
+
+    // --- Pause when tab hidden ---
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stop();
+        } else if (heroVisible) {
+            start();
+        }
+    });
+
+    // --- Pause when hero scrolled out of view ---
+    if ('IntersectionObserver' in window && hero) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                heroVisible = entry.isIntersecting;
+                if (heroVisible && !document.hidden) {
+                    start();
+                } else {
+                    stop();
+                }
+            });
+        }, { threshold: 0 });
+        heroObserver.observe(hero);
+    }
+
+    // Kick off.
+    start();
 }
 
 // ============================================
@@ -673,95 +1087,8 @@ function initializeBackToTop() {
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth'
+                behavior: scrollBehavior()
             });
-        });
-    }
-}
-
-// ============================================
-// Initialize Particles Background
-// ============================================
-function initializeParticles() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#667eea', '#764ba2', '#f093fb']
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#667eea',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
         });
     }
 }

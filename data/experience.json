@@ -4,50 +4,53 @@
   "experiences": [
     {
       "title": "Research Assistant (Data Analytics)",
+      "icon": "fas fa-flask",
+      "color": "#3B82F6",
       "company": "University of Texas at Arlington – SEAR Lab",
       "period": "Jan 2026 – Present",
-      "location": "",
+      "location": "Texas, USA",
       "description": "Analyzed 15,000+ RFID commissioning records across multiple deployment environments, quantifying 12% variance in read accuracy and isolating operational performance gaps.\nBuilt and automated Python and SQL data validation workflows to clean and structure 50+ experimental datasets, reducing preprocessing time by 40% and improving downstream data reliability.\nProduced statistical performance analyses and interactive dashboards supporting 3 concurrent research initiatives, enabling 8–15% optimization improvements in controlled system evaluations.",
       "responsibilities": [
         "Analyzed 15,000+ RFID commissioning records across multiple deployment environments, quantifying 12% variance in read accuracy and isolating operational performance gaps",
         "Built and automated Python and SQL data validation workflows to clean and structure 50+ experimental datasets, reducing preprocessing time by 40% and improving downstream data reliability",
         "Produced statistical performance analyses and interactive dashboards supporting 3 concurrent research initiatives, enabling 8–15% optimization improvements in controlled system evaluations"
-      ]
-    },
-    {
-      "title": "Co-Founder",
-      "company": "DATA (Data Analytics and Technology Association), UTA Data Science Department",
-      "period": "Sep 2024 - Dec 2025",
-      "location": "",
-      "description": "Led datathons and analytics workshops for 200+ participants, delivering 15+ data science projects and hands-on training.\nScaled a 150+ member analytics community at UTA, coordinating cross-functional teams, industry mentorship initiatives.",
-      "responsibilities": [
-        "Led datathons and analytics workshops for 200+ participants, delivering 15+ data science projects and hands-on training",
-        "Scaled a 150+ member analytics community at UTA, coordinating cross-functional teams, industry mentorship initiatives"
-      ]
+      ],
+      "domain": "uta.edu",
+      "monogram": "UTA",
+      "logo": "assets/images/logos/uta.png"
     },
     {
       "title": "Data Annotator",
+      "icon": "fas fa-vector-square",
+      "color": "#22D3EE",
       "company": "Samsung SEED Pvt Ltd",
       "period": "May 2023 - Dec 2023",
-      "location": "",
+      "location": "Bengaluru, India",
       "description": "Executed semantic segmentation on millions of image pixels, classifying complex scenes with advanced interaction techniques that reduced annotation error rates by 20% and improved downstream model accuracy by 15%.\nLeveraged Samsung R&D’s proprietary annotation tool Datagen to refine image annotation accuracy by 30%, enhancing deep learning model training efficiency by 25% across multiple AI initiatives serving millions of users.\nOptimized annotation workflows and data processing pipelines across cross-functional AI teams, reducing time-to-production for computer vision models and streamlining operations for production deployment at scale.",
       "responsibilities": [
         "Executed semantic segmentation on millions of image pixels, classifying complex scenes with advanced interaction techniques that reduced annotation error rates by 20% and improved downstream model accuracy by 15%",
         "Leveraged Samsung R&D’s proprietary annotation tool Datagen to refine image annotation accuracy by 30%, enhancing deep learning model training efficiency by 25% across multiple AI initiatives serving millions of users",
         "Optimized annotation workflows and data processing pipelines across cross-functional AI teams, reducing time-to-production for computer vision models and streamlining operations for production deployment at scale"
-      ]
+      ],
+      "domain": "samsung.com",
+      "monogram": "S",
+      "logo": "assets/images/logos/samsung.png"
     },
     {
       "title": "Data Science Intern",
+      "icon": "fas fa-database",
+      "color": "#2563EB",
       "company": "Varcons Technology Pvt Ltd",
       "period": "Apr 2022 - Sep 2022",
-      "location": "",
+      "location": "Bengaluru, India",
       "description": "Designed and implemented an end-to-end recommendation pipeline on 500K+ user records, delivering personalized diet insights to 10K+ users and increasing engagement by 15% through behavioral pattern analysis.\nDeveloped SQL-based ETL data pipelines using MySQL and PostgreSQL for large-scale user data, reducing query latency by 25% and enabling real-time analytics for ML applications.\nCreated backend analytics services using Python and Flask to support scalable data processing, reporting, and KPI tracking, partnering with product and engineering teams to translate business requirements into measurable data science solutions.",
       "responsibilities": [
         "Designed and implemented an end-to-end recommendation pipeline on 500K+ user records, delivering personalized diet insights to 10K+ users and increasing engagement by 15% through behavioral pattern analysis",
         "Developed SQL-based ETL data pipelines using MySQL and PostgreSQL for large-scale user data, reducing query latency by 25% and enabling real-time analytics for ML applications",
         "Created backend analytics services using Python and Flask to support scalable data processing, reporting, and KPI tracking, partnering with product and engineering teams to translate business requirements into measurable data science solutions"
-      ]
+      ],
+      "domain": "varcons.com",
+      "monogram": "VT"
     }
   ]
 }
